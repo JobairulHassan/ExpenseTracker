@@ -3,6 +3,7 @@ package com.example.expensetracker.viewmodel
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.expensetracker.Utils
 import com.example.expensetracker.data.ExpenseDB
 import com.example.expensetracker.data.dao.ExpenseDao
 import com.example.expensetracker.data.model.ExpenseEntity
@@ -19,7 +20,7 @@ class HomeViewModel(dao: ExpenseDao) : ViewModel() {
               total -= it.amount
             }
         }
-        return "${total} ৳"
+        return "${Utils.numberFormatting(total)} ৳"
     }
 
     fun getTotalExpense(list: List<ExpenseEntity>): String {
@@ -29,7 +30,7 @@ class HomeViewModel(dao: ExpenseDao) : ViewModel() {
                 total += it.amount
             }
         }
-        return "${total} ৳"
+        return "${Utils.numberFormatting(total)} ৳"
     }
 
     fun getTotalIncome(list: List<ExpenseEntity>): String {
@@ -39,7 +40,7 @@ class HomeViewModel(dao: ExpenseDao) : ViewModel() {
                 total += it.amount
             }
         }
-        return "${total} ৳"
+        return "${Utils.numberFormatting(total)} ৳"
     }
 }
 

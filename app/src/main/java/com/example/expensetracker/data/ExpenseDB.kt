@@ -28,19 +28,9 @@ abstract class ExpenseDB : RoomDatabase() {
             ).addCallback(object : Callback() {
                 override fun onCreate(db: SupportSQLiteDatabase) {
                     super.onCreate(db)
-                    InitBasicData(context)
-                }
-
-                fun InitBasicData(context: Context) {
-                    CoroutineScope(Dispatchers.IO).launch {
-                        val dao = getDatabase(context).expenseDao()
-                        dao.insertExpense(ExpenseEntity(1, "Salary", 25000.00, "2024-10-01", "Income"))
-                        dao.insertExpense(ExpenseEntity(2, "Transport", 5000.00, "2024-10-02", "Expense"))
-                    }
                 }
             }
             )
-
                 .build()
         }
     }
